@@ -1,24 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import AppProvider from "./components/AppProvider";
+
+import Box from "./components/Box";
+import Page from "./components/Page";
+import KeypadCard from "./games/keypad/HomepageCard";
+import Keypad from "./games/keypad";
+import OddOneOutCard from "./games/oddOneOut/HomepageCard";
+import OddOneOut from "./games/oddOneOut";
+import AnagramsCard from "./games/anagrams/HomePageCard";
+import Anagrams from "./games/anagrams";
+import StandardCard from "./components/StandardCard";
+
+function Home () {
+
+  return (
+    <Page>
+      <Box pt={[20, 30]} pb={[40, 60]}>
+        <Box
+          display="grid"
+          gridGap={30}
+          gridTemplateColumns={["1fr", "1fr 1fr"]}
+          mx={4}
+        >
+          <OddOneOutCard/>
+          <KeypadCard/>
+          <AnagramsCard/>
+          <StandardCard justifyContent="center">
+            <Box as="h2" color="slate">
+              Coming soon
+            </Box>
+          </StandardCard>
+        </Box>
+      </Box>
+    </Page>
+  );
+}
+
+
+{/* <Route path="keypad" element={<Keypad/>} />
+<Route path="anagrams" element={<Anagrams/>} /> */}
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <AppProvider>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/games/odd-one-out" element={<OddOneOut/>} />
+          <Route path="/games/anagrams" element={<Anagrams/>} /> */}
+        </Routes>
+      </AppProvider>
+    </BrowserRouter>
   );
 }
 
