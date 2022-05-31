@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
 
 `;
 
-const INIT_URL = "http://localhost:8000/api/init";
+const INIT_URL = process.env.REACT_APP_API_URL || "http://localhost:8000/api/init";
 
 export const AppContext = createContext();
 
