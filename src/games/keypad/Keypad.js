@@ -20,8 +20,6 @@ KeypadButton.defaultProps = {
 
 export default function Keypad ({ children: keys, ...rest }) {
 
-    console.log(keys);
-
     return (
         <Box 
             display="flex" 

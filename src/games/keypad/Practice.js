@@ -277,6 +277,7 @@ function Practice() {
             </Box>
             <Box p={20} bg="white" borderRadius={30}>
               <SimpleBar
+                forceVisible={true}
                 style={{
                   backgroundColor: "white",
                   color: "black",
