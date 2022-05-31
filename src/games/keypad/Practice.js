@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import SimpleBar from "simplebar-react";
 import Box from "../../components/Box";
 import Button from "../../components/Button";
@@ -154,7 +154,9 @@ function GameExplanation({ messageIndex, setMessageIndex }) {
 
 function Practice() {
   const [index, setIndex] = useState(0);
-  const [keypads, setSKeypad] = useState([
+
+
+  const keypads = useRef([
     {
       keypad: [2, 4, 1, 3, 6, 5, 9, 7, 8],
       answer: 6,
@@ -182,6 +184,7 @@ function Practice() {
       answer: 6,
     },
   ]);
+
   const [messageIndex, setMessageIndex] = useState(0);
   const [buttonActive, setButtonActive] = useState();
 
@@ -191,8 +194,8 @@ function Practice() {
       if (messageIndex === 0) {
         return;
       }
-      if (keypads[index].answer === buttonIndex) {
-        if (index + 1 < keypads.length) {
+      if (keypads.current[index].answer === buttonIndex) {
+        if (index + 1 < keypads.current.length) {
           setIndex(index + 1);
           setMessageIndex(messageIndex + 1);
         } else {
@@ -200,7 +203,7 @@ function Practice() {
         }
       }
     },
-    [messageIndex, keypads, index, setIndex, setMessageIndex]
+    [messageIndex, index, setIndex, setMessageIndex]
   );
 
   const commonOutlineProps = {
@@ -231,20 +234,20 @@ function Practice() {
       window.removeEventListener("keyup", handleKeyUp);
     };
 
-  }, [onClick]);
+  }, [buttonActive, onClick, setButtonActive]);
 
-  const buttons = keypads[index].keypad.map((key, buttonIndex) => {
+  const buttons = keypads.current[index].keypad.map((key, buttonIndex) => {
     const btn = {
       number: key,
       props: {
         ...commonOutlineProps,
       },
     };
-    if (buttonIndex === keypads[index].clicked) {
+    if (buttonIndex === keypads.current[index].clicked) {
       btn.props["outlineColor"] = "green";
-    } else if (buttonIndex === keypads[index].pointer) {
+    } else if (buttonIndex === keypads.current[index].pointer) {
       btn.props["outlineColor"] = "red";
-    } else if (buttonIndex === keypads[index].next) {
+    } else if (buttonIndex === keypads.current[index].next) {
       btn.props["outlineColor"] = "yellow";
     }
     return btn;

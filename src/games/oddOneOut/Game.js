@@ -27,7 +27,7 @@ export default function Game() {
 
   const {  timeRemaining: countDown } = useTimer({ duration: 3 });
   const { timeRemaining, start } = useTimer({ automatic: false, duration: 30 });
-  const [score, decreaseScore, increaseScore] = useCounter(0);
+  const [score,, increaseScore] = useCounter(0);
   const [lives, decreaseLives] = useCounter(3);
   const [data] = useDataLoader(init.urls.get_odd_one_out_game);
   const [gameIndex, setGameIndex] = useState(0);

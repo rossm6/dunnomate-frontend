@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 const shift = (code, base, range, shiftValue) => {
     /**
      * Python and Javascript implement the modulus operator differently

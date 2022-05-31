@@ -9,7 +9,7 @@ import { theme } from "../../core/theme";
 export default function HomepageCard () {
     const { init } = useContext(AppContext);
 
-    const [data, [scores, percentages]] = useBellCurve(
+    const [, [scores, percentages]] = useBellCurve(
         init.urls.get_bell_curve,
         { game: init.games[GAME_NAME] }
     );

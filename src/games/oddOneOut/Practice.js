@@ -77,7 +77,7 @@ function IncorrectAnswer({ game, tryAgain, walkthroughIndex }) {
 function Practice() {
   const [index, setIndex] = useState(0);
   const { init } = useContext(AppContext);
-  const { state, dispatch } = useContext(GameContext);
+  const { dispatch } = useContext(GameContext);
   const [data] = useDataLoader(
     init.urls.get_odd_one_out_practice_game
   );

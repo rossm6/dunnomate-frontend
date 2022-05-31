@@ -27,7 +27,7 @@ export default function Game() {
    */
 
   const {  timeRemaining: countDown } = useTimer({ duration: 3 });
-  const [score, decreaseScore, increaseScore] = useCounter(0);
+  const [score,,increaseScore] = useCounter(0);
   const [data] = useDataLoader(init.urls.get_anagrams_game);
   const [gameIndex, setGameIndex] = useState(0);
   const [gameOver, setGameOver] = useState(false);

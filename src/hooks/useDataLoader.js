@@ -19,6 +19,7 @@ const useDataLoader = (url, params) => {
         setError();
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, params, setData, setError]);
 
   return [data, error];

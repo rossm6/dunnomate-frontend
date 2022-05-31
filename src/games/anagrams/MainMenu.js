@@ -13,7 +13,7 @@ function MainMenu() {
 
     const { init } = useContext(AppContext);
     const { dispatch } = useContext(GameContext);
-    const [data, [scores, percentages]] = useBellCurve(
+    const [, [scores, percentages]] = useBellCurve(
       init.urls.get_bell_curve,
       { game: init.games[GAME_NAME] }
     );

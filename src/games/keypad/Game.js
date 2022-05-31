@@ -6,9 +6,8 @@ import useCounter from "../../hooks/useCounter";
 import useTimer from "../../hooks/useTimer";
 import Page from "./Page";
 import BasePage from "../../components/Page";
-import { AppContext } from "../../components/AppProvider";
 import styled from "styled-components";
-import { DIGITS, GAME_NAME, GAME_TIME_LIMIT, indexToNumberPressed } from "./constants";
+import { DIGITS, indexToNumberPressed } from "./constants";
 import useKeyPad, {
   keyboardDefaultMap,
   replaceNumberNine,
@@ -39,7 +38,6 @@ import { NUMBERS_MAP } from "../../core/constants";
 `;
 
 export default function Game() {
-  const { init } = useContext(AppContext);
   const { dispatch } = useContext(GameContext);
 
   const numbers = shuffle(DIGITS);
@@ -52,7 +50,7 @@ export default function Game() {
 
   const {  timeRemaining: countDown } = useTimer({ duration: 3 });
   const { timeRemaining, start } = useTimer({ automatic: false, duration: 30 });
-  const [score, decreaseScore, increaseScore] = useCounter(0);
+  const [score,, increaseScore] = useCounter(0);
   const [lives, decreaseLives] = useCounter(3);
 
   const [buttonActive, setButtonActive] = useState();
@@ -100,7 +98,7 @@ export default function Game() {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, [onClick, buttonActive, setButtonActive, increaseScore]);
+  }, [onClick, buttonActive, setButtonActive, increaseScore, failure, success]);
 
   useEffect(() => {
     if (!lives || !timeRemaining) {
