@@ -1,8 +1,6 @@
 import { useContext, useState } from "react";
 import Box from "../../components/Box";
 import useDataLoader from "../../hooks/useDataLoader";
-import useTimer from "../../hooks/useTimer";
-import { GAME_TIME_LIMIT } from "./constants";
 import Anagram from "./Anagram";
 import Page from "./Page";
 import TiledLetters from "../../components/Letters";
@@ -18,19 +16,13 @@ export default function Practice() {
   const [data] = useDataLoader(
     init.urls.get_anagrams_practice_game
   );
-  const { timeRemaining: timer, start } = useTimer({
-    duration: GAME_TIME_LIMIT,
-    automatic: false,
-  });
-  const [gameIndex, setGameIndex] = useState(0);
+  const gameIndex = 0;
   const [gameOver, setGameOver] = useState(false);
   const [unsolvedAnagram, setUnsolvedAnagram] = useState();
 
   if (!data) {
     return <Loading />;
   }
-
-  start();
 
   const anagram = data?.games?.[gameIndex]?.anagram;
   const cipheredSolution = data?.games?.[gameIndex]?.solution;

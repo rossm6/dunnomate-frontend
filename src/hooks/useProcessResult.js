@@ -27,7 +27,7 @@ const useProcessResult = (dispatch, record_game_url, gameID, processResult) => {
         }
       );
     }
-  }, [dispatch, gameID, processResult, record_game_url]);
+  }, [dispatch, gameID, processResult, record_game_url, init.csrftoken]);
 };
 
 export default useProcessResult;

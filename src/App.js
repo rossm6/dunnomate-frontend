@@ -40,11 +40,6 @@ function Home () {
   );
 }
 
-
-{/* <Route path="keypad" element={<Keypad/>} />
-<Route path="anagrams" element={<Anagrams/>} /> */}
-
-
 function App() {
   return (
     <BrowserRouter>
@@ -52,7 +47,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/games/odd-one-out" element={<OddOneOut/>} />
-          <Route path="/games/anagrams" element={<Anagrams/>} /> */}
+          <Route path="/games/anagrams" element={<Anagrams/>} />
+          <Route path="/games/keypad" element={<Keypad/>}/>
         </Routes>
       </AppProvider>
     </BrowserRouter>

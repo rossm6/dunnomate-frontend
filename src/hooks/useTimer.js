@@ -20,7 +20,7 @@ const useTimer = ({
         clearInterval(clearId);
       };
     }
-  }, [timerStarted, _pause, timer, setTimer]);
+  }, [timerStarted, _pause, timer, setTimer, interval, unit]);
 
   const pause = () => setPause(true);
   const resume = () => setPause(false);

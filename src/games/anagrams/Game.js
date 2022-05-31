@@ -34,8 +34,7 @@ export default function Game() {
   const [unsolvedAnagram, setUnsolvedAnagram] = useState();
 
   const games = data?.games;
-  const game = games?.[gameIndex]?.game;
-
+  
   useEffect(() => {
     if (gameOver || (games && gameIndex >= games?.length)) {
       dispatch({

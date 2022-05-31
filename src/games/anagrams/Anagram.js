@@ -6,7 +6,7 @@ import TiledLetters, {
   UNSELECTED_TILE_COLOR,
 } from "../../components/Letters";
 import useTimer from "../../hooks/useTimer";
-import { GAME_NAME, GAME_TIME_LIMIT } from "./constants";
+import { GAME_TIME_LIMIT } from "./constants";
 
 export default function Anagram({ anagram, isCorrect, gameOver, solution }) {
   const [selectedLetters, setSelectedLetters] = useState([]);

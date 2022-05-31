@@ -12,7 +12,7 @@ const useDataLoader = (url, params) => {
       setData(_data);
       setError();
     });
-  }, []);
+  }, [url, params]);
 
   return [data, error];
 
