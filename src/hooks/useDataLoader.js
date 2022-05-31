@@ -11,8 +11,15 @@ const useDataLoader = (url, params) => {
   const previousParams = usePrevious(params);
 
   useEffect(() => {
-
-    if(!isEqual(previousParams, params)){
+    if(
+      !previousParams
+      ||
+      (
+        previousParams
+        &&
+        !isEqual(previousParams, params)
+      )
+    ){
       query(url, params, { onError: (e) => { setError(e) } })
       .then((_data) => {
         setData(_data);
