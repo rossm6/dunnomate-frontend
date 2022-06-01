@@ -12,7 +12,7 @@ const common = {
 
 const Button = styled('button')(
     {
-        appearance: 'none',
+        appearance: 'button',
         fontFamily: 'inherit',
         padding: "10px 20px",
         fontSize: 14,
@@ -22,7 +22,7 @@ const Button = styled('button')(
         border: 0,
         cursor: "pointer",
         fontWeight: "bold",
-        letterSpacing: "1px"
+        letterSpacing: "1px",
     },
     variant({
         variants: {

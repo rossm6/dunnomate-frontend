@@ -14,7 +14,7 @@ export default function Page({ children }) {
         alignItems="center"
         minWidth={0}
       >
-        <Box aspectRatio={"1"} minWidth={0} maxWidth={350} width={1}>
+        <Box minWidth={0} maxWidth={350} width={1}>
           {children}
         </Box>
       </Box>
