@@ -44,7 +44,7 @@ function GridSquare({ background, shape, color, formation, onClick }) {
             maxWidth="100%"
             maxHeight="100%"
           >
-            <ShapeComponent fill={color} style={{ height: "100%", width: "100%" }} />
+            <ShapeComponent fill={color} style={{ height: "calc(100% - 2px)", width: "calc(100% - 2px)" }} />
           </Box>
         )
       )}
