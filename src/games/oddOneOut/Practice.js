@@ -149,7 +149,7 @@ function Practice() {
       />
     ),
     !practiceErrors.has(2) ? (
-      <Box height={"100%"}>
+      <Box aspectRatio="1" height={"100%"}>
         <Box height="100%" bg="white" p={2} borderRadius={20}>
           <GameGrid
             squares={games?.[1]?.game?.squares || []}
