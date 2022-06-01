@@ -26,6 +26,8 @@ function GridSquare({ background, shape, color, formation, onClick }) {
       borderStyle="solid"
       cursor="pointer"
       onClick={onClick}
+      maxWidth="100%"
+      maxHeight="100%"
     >
       {formation.split("").map((el, index) =>
         el === "0" ? (
@@ -39,7 +41,7 @@ function GridSquare({ background, shape, color, formation, onClick }) {
             key={index}
             p={"1px"}
           >
-            <ShapeComponent fill={color} />
+            <ShapeComponent fill={color} style={{ height: "100%", width: "100%" }} />
           </Box>
         )
       )}
