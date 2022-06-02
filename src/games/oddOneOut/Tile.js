@@ -58,7 +58,7 @@ function Shape ({ color, index, shape }) {
 function Tile ({ background, formation, shape, color }) {
 
   return (
-    <svg viewBox="0 0 100 100" style={{ background, borderRadius: 5 }}>
+    <svg viewBox="0 0 100 100" style={{ background, borderRadius: 5, height: "100%", width: "100%" }}>
       {
         formation.split("").map((item, index) => (
           item === "1" ? <Shape color={color} shape={shape} index={index} key={index} /> : null
