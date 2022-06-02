@@ -1,6 +1,5 @@
 import Box from "../../components/Box";
 import styled from "styled-components";
-import GridSquare from "./GridSquare";
 import Tile from "./Tile";
 
 const GameDimensions = styled(Box)`
