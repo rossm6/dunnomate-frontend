@@ -5,6 +5,8 @@ import usePrevious from "../../hooks/usePrevious";
 import { keyboardDefaultMap } from "./useKeypad";
 import isNumber from "lodash.isnumber";
 import { indexToNumberPressed } from "./constants";
+import { ReactComponent as ReplaySVG } from '../../images/replay.svg';
+import Button from "../../components/Button";
 
 /**
  * Indicate whether the user got the answer wrong or right.
@@ -74,7 +76,7 @@ function helperButtonProps (path, index) {
     bg = "green";
   }
 
-  if(path.index === indexToNumberPressed[index]){
+  if(path.on && path.index === indexToNumberPressed[index]){
     bg = "blue";
     color = "white";
   }
@@ -99,13 +101,15 @@ export default function KeypadGame ({
   failure,
   handleMouseDown,
   handleMouseUp,
-  showHelpers
+  showHelpers,
+  showReplayButton
 }) {
 
   const [path, setPath] = useState({
     start: undefined,
     end: undefined,
-    index: undefined
+    index: undefined,
+    on: false
   });
 
   const previousNumbers = usePrevious(numbers);
@@ -117,7 +121,8 @@ export default function KeypadGame ({
       setPath({
         start,
         end,
-        index: start + 1 === 9 ? indexToNumberPressed[keyboardDefaultMap[0]] : start + 1
+        index: start + 1 === 9 ? indexToNumberPressed[keyboardDefaultMap[0]] : start + 1,
+        on: true
       });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -125,23 +130,28 @@ export default function KeypadGame ({
 
   useEffect(() => {
 
-    if(path.index !== undefined){
+    if(path.index !== undefined && path.on){
 
       const id = setInterval(() => {
         let index;
+        let on;
         if(path.index === path.end){
           index = path.start + 1;
+          on = false;
         }
         else{
           index = path.index + 1;
+          on = true;
         }
         index = index === 9 ? indexToNumberPressed[keyboardDefaultMap[0]] : index;
 
         setPath({
           start: path.start,
           end: path.end,
-          index
+          index,
+          on
         });
+
       }, [1000]);
 
       return () => {
@@ -158,6 +168,15 @@ export default function KeypadGame ({
       p={4}
       {...keypadContainerProps}
     >
+      {
+        showReplayButton
+        &&
+        <Box display="flex" justifyContent="center" mt={2} mb={30}>
+          <Button display="flex" onClick={() => setPath({ ...path, on: true })}>
+            <ReplaySVG/>
+          </Button>
+        </Box>
+      }
       <Keypad>
         {numbers.map((number, index) => (
           <Box>
@@ -185,5 +204,6 @@ export default function KeypadGame ({
 }
 
 KeypadGame.defaultProps = {
-  showHelpers: false
+  showHelpers: false,
+  showReplayButton: false
 };
