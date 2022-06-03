@@ -33,15 +33,6 @@ function Message ({ number, movement }) {
           </Box>
         </Box>
         <Box as="p" my={20}>Continue the sequence until you feel confident you understand.  In the real game you will literally just have the buttons.</Box>
-        <Box display="flex" justifyContent="center" mt={40}>
-          <Button
-            px={3}
-            py={2}
-            variant="secondary"
-          >
-            Play for real
-          </Button>
-        </Box>
       </Box>
     );
   }
@@ -116,6 +107,15 @@ function Practice() {
               showHelpers={true}
               showReplayButton={clickCount > 0}
             />
+            <Box display="flex" justifyContent="center" mt={40}>
+              <Button
+                px={3}
+                py={2}
+                variant="secondary"
+              >
+                Play for real
+              </Button>
+            </Box>
           </Box>
         }
       />
