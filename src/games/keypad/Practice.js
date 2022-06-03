@@ -3,7 +3,7 @@ import GeneralCard from "../../components/GeneralCard";
 import Page from "./Page";
 import { indexToNumberPressed } from "./constants";
 import useKeyPadGame from "./useKeypadGame";
-import KeypadGame from "./Keypad";
+import KeypadGame, { Scrollable } from "./Keypad";
 import { useState } from "react";
 import isNumber from "lodash.isnumber";
 import Button from "../../components/Button";
@@ -14,9 +14,8 @@ function Message ({ number, movement }) {
     return (
       <Box>
         <Box as="p" my={30}>The green button is the one you clicked.</Box>
-        <Box as="p" my={30}>The button with the red number is the button you have to click next.</Box>
         <Box as="ul" my={30}>
-          To work out why this button is the next to click you must do the following -
+          To work out which button you must click next do the following -
           <Box as="li" my={20}>
             {`Take the number which is showing in the button you last clicked  (the green button).
             It is currently showing the number ${number}.`}
@@ -31,8 +30,12 @@ function Message ({ number, movement }) {
             buttons show you how to count in case you aren't sure.  (Feel free to use
             the replay button).
           </Box>
+          <Box as="li" my={20}>
+            The button you have to click next has a red number.  Click it to continue
+            the sequence.
+          </Box>
         </Box>
-        <Box as="p" my={20}>Continue the sequence until you feel confident you understand.  In the real game you will literally just have the buttons.</Box>
+        <Box as="p" my={20}>In the real game you will literally just have the buttons.</Box>
       </Box>
     );
   }
@@ -81,15 +84,32 @@ function Practice() {
               <Box as="h1" textAlign="center" fontSize={[18, 20]} mb={30}>
                 Practice Mode
               </Box>
-              <Box fontSize={12} maxHeight={200} overflow="auto" textAlign="left" mb={30}>
+              <Box
+                fontSize={12}
+                maxHeight={200}
+                mb={30}
+                position="relative"
+                overflow="auto"
+                textAlign="left"
+              >
                 {
                   clickCount > 0
                   ?
-                  <Message number={state.current.display} movement={state.numbers[indexToNumberPressed[state.current.display - 1]]} />
+                  <Message
+                    movement={state.numbers[indexToNumberPressed[state.current.display - 1]]}
+                    number={state.current.display}
+                    />
                   :
                   <Message/>
                 }
               </Box>
+              {
+                clickCount > 0
+                &&
+                <Box display="flex" justifyContent="center">
+                  <Scrollable />
+                </Box>
+              }
             </Box>
             <KeypadGame
               keypadContainerProps={keypadContainerProps}

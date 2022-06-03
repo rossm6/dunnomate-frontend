@@ -29,6 +29,76 @@ import Button from "../../components/Button";
   }
 `;
 
+export const Scrollable = styled(Box)`
+
+  width: 30px;
+  height: 30px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  position: relative;
+  animation: down 1.5s infinite;
+  -webkit-animation: down 1.5s infinite;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid #333;
+    border-bottom: 2px solid #333;
+    transform: rotate(-45deg);
+  }
+
+  @keyframes down {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translateY(15px);
+    }
+    40% {
+      transform: translate(0);
+    }
+  }
+
+  @-webkit-keyframes {
+    0% {
+      transform: translate(0);
+    }
+    20% {
+      transform: translateY(15px);
+    }
+    40% {
+      transform: translate(0);
+    }
+  }
+
+  @keyframes scroll {
+    0% {
+      height: 40px;
+    }
+    30% {
+      height: 70px;
+    }
+    60% {
+      height: 40px;
+    }
+  }
+
+  @-webkit-keyframes scroll {
+    0% {
+      height: 40px;
+    }
+    30% {
+      height: 70px;
+    }
+    60% {
+      height: 40px;
+    }
+  }
+`;
+
 const KeypadButton = styled(Box)``;
 
 KeypadButton.defaultProps = {
