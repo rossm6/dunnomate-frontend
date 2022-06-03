@@ -34,7 +34,13 @@ function Message ({ number, movement }) {
         </Box>
         <Box as="p" my={20}>Continue the sequence until you feel confident you understand.  In the real game you will literally just have the buttons.</Box>
         <Box display="flex" justifyContent="center" mt={40}>
-          <Button variant="secondary">Play for real</Button>
+          <Button
+            px={3}
+            py={2}
+            variant="secondary"
+          >
+            Play for real
+          </Button>
         </Box>
       </Box>
     );
@@ -81,7 +87,7 @@ function Practice() {
         Chart={
           <Box>
             <Box bg="white" p={4} borderRadius={20} mb={4}>
-              <Box as="h1" textAlign="center" fontSize={[18, 20]}>
+              <Box as="h1" textAlign="center" fontSize={[18, 20]} mb={30}>
                 Practice Mode
               </Box>
               <Box fontSize={12} maxHeight={200} overflow="auto" textAlign="left" mb={30}>

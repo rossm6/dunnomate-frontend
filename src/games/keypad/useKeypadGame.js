@@ -3,8 +3,8 @@ import useKeyPad, {
   keyboardDefaultMap,
   replaceNumberNine,
 } from "./useKeypad";
-import { DIGITS, indexToNumberPressed } from "./constants";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { DIGITS } from "./constants";
+import { useCallback, useEffect, useState } from "react";
 import useCounter from "../../hooks/useCounter";
 import { NUMBERS_MAP } from "../../core/constants";
 

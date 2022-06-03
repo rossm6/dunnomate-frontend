@@ -6,13 +6,11 @@ import useCounter from "../../hooks/useCounter";
 import useTimer from "../../hooks/useTimer";
 import Page from "./Page";
 import BasePage from "../../components/Page";
-import styled from "styled-components";
 import { DIGITS, indexToNumberPressed } from "./constants";
 import useKeyPad, {
   keyboardDefaultMap,
   replaceNumberNine,
 } from "./useKeypad";
-import Keypad, { KeypadButton } from "./Keypad";
 import GeneralCard from "../../components/GeneralCard";
 import { NUMBERS_MAP } from "../../core/constants";
 import KeypadGame from "./Keypad";
