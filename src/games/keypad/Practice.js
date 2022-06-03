@@ -4,9 +4,10 @@ import Page from "./Page";
 import { indexToNumberPressed } from "./constants";
 import useKeyPadGame from "./useKeypadGame";
 import KeypadGame, { Scrollable } from "./Keypad";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import isNumber from "lodash.isnumber";
 import Button from "../../components/Button";
+import { GameContext } from "../../core/contexts";
 
 function Message ({ number, movement }) {
 
@@ -67,12 +68,17 @@ function Practice() {
     failure
   ] = useKeyPadGame();
 
+  const { dispatch } = useContext(GameContext);
   const [clickCount, setClickCount] = useState(0);
 
   const practiceOnClickHandler = (index, success, failure) => {
     onClick(index, success, failure);
     setClickCount(clickCount + 1);
   };
+
+  if(keypadContainerProps.animation === "correct 0.25s"){
+    keypadContainerProps.animation = undefined;
+  }
 
   return (
     <Page>
@@ -129,6 +135,12 @@ function Practice() {
             />
             <Box display="flex" justifyContent="center" mt={40}>
               <Button
+                onClick={() => {
+                  dispatch({
+                    type: "setView",
+                    payload: "game"
+                  });
+                }}
                 px={3}
                 py={2}
                 variant="secondary"
