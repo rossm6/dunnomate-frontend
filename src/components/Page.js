@@ -1,8 +1,8 @@
 import Box from "./Box";
 import { useNavigate } from "react-router-dom";
 
-export default function Page({ children, bg }) {
-  
+export default function Page({ children, bg, SubHeading }) {
+
   const navigate = useNavigate();
 
   return (
@@ -15,7 +15,7 @@ export default function Page({ children, bg }) {
         mx="auto"
         width={1}
       >
-        <Box py={6}>
+        <Box pt={6}>
           <Box
             as="h1"
             fontSize={[20, 24]}
@@ -29,6 +29,7 @@ export default function Page({ children, bg }) {
           >
             Dunnomate
           </Box>
+          {SubHeading}
         </Box>
         {children}
       </Box>

@@ -15,27 +15,8 @@ import useKeyPad, {
 import Keypad, { KeypadButton } from "./Keypad";
 import GeneralCard from "../../components/GeneralCard";
 import { NUMBERS_MAP } from "../../core/constants";
+import KeypadGame from "./Keypad";
 
-/**
- * Indicate whether the user got the answer wrong or right.
- * The lives counter isn't clear enough.
- * We should be increasing scores on success !!
- */
-
- const KeyPadContainer = styled(Box)`
-  @keyframes incorrect {
-    100% {
-      background-color: red;
-      opacity: 0.5;
-    }
-  }
-  @keyframes correct {
-    100% {
-      background-color: green;
-      opacity: 0.5;
-    }
-  }
-`;
 
 export default function Game() {
   const { dispatch } = useContext(GameContext);
@@ -129,9 +110,9 @@ export default function Game() {
       <BasePage bg="blue">
         <Box
           flex={1}
-          display="flex" 
-          justifyContent="center" 
-          alignItems="center" 
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           fontSize={[24, 36, 48]}
         >
           {countDown}
@@ -199,31 +180,18 @@ export default function Game() {
                 </Box>
               </Box>
             </Box>
-            <KeyPadContainer
-              bg="white"
-              borderRadius={30}
-              p={4}
-              {...keypadContainerProps}
-            >
-              <Keypad>
-                {state.numbers.map((number, index) => (
-                  <KeypadButton
-                    {...(index === buttonActive && activeButtonProps)}
-                    key={index}
-                    onClick={() => {
-                      onClick(indexToNumberPressed[index], success, failure);
-                    }}
-                    onMouseDown={() => handleMouseDown(index)}
-                    onMouseUp={() => handleMouseUp(index)}
-                    onTouchStart={() => handleMouseDown(index)}
-                    // onMouseUp seems to be firing on mobile ??
-                    // And it is this which undos the effect from onTouchStart
-                  >
-                    {number}
-                  </KeypadButton>
-                ))}
-              </Keypad>
-            </KeyPadContainer>
+            <KeypadGame
+              keypadContainerProps={keypadContainerProps}
+              numbers={state.numbers}
+              buttonActive={buttonActive}
+              activeButtonProps={activeButtonProps}
+              indexToNumberPressed={indexToNumberPressed}
+              onClick={onClick}
+              success={success}
+              failure={failure}
+              handleMouseDown={handleMouseDown}
+              handleMouseUp={handleMouseUp}
+            />
           </Box>
         }
       />

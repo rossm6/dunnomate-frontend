@@ -18,7 +18,13 @@ import StandardCard from "./components/StandardCard";
 function Home () {
 
   return (
-    <Page>
+    <Page
+      SubHeading={
+        <Box as="h2" color="slate" fontSize={16} my={40} textAlign="center">
+          Simple games which make you think
+        </Box>
+      }
+    >
       <Box pt={[20, 30]} pb={[40, 60]}>
         <Box
           display="grid"

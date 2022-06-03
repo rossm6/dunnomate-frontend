@@ -187,7 +187,7 @@ function Practice() {
         <Box as="h1" textAlign="center" fontSize={[18, 20]}>
           Practice Mode
         </Box>
-        <Box fontSize={14} my={30} textAlign="center" whiteSpace="pre-line">
+        <Box fontSize={14} mb={30} textAlign="center" whiteSpace="pre-line">
           {messages[index]}
         </Box>
         <Box mt={30}>
