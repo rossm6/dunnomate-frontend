@@ -20,7 +20,7 @@ export default function GameOver() {
         chartColor={theme.colors.green}
         chartData={state.result?.chart}
         url="https://www.dunnomate.com/games/odd-one-out"
-        shareMessage="Example keypad share message"
+        shareMessage={`Dunnomate, I only scored ${state.result?.you?.score}`}
       />
     </Page>
   );

@@ -249,7 +249,7 @@ export default function KeypadGame ({
       }
       <Keypad>
         {numbers.map((number, index) => (
-          <Box>
+          <Box key={index}>
             {showHelpers && <Box color="blue" fontSize={10}>{indexToNumberPressed[index] + 1}</Box>}
               <KeypadButton
                 {...(index === buttonActive && activeButtonProps)}

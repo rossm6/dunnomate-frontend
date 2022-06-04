@@ -34,7 +34,7 @@ export default function Game() {
   const [unsolvedAnagram, setUnsolvedAnagram] = useState();
 
   const games = data?.games;
-  
+
   useEffect(() => {
     if (gameOver || (games && gameIndex >= games?.length)) {
       dispatch({
@@ -67,9 +67,9 @@ export default function Game() {
       <BasePage bg={theme.colors.yellow}>
         <Box
           flex={1}
-          display="flex" 
-          justifyContent="center" 
-          alignItems="center" 
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           fontSize={[24, 36, 48]}
         >
           {countDown}
@@ -78,14 +78,18 @@ export default function Game() {
     );
   }
 
-  if(countDown === 0 && !data?.games?.length){
+  if(
+    (countDown === 0 && !data?.games?.length)
+    ||
+    !anagram
+  ){
     return (
       <BasePage bg={theme.colors.yellow}>
         <Box
           flex={1}
-          display="flex" 
-          justifyContent="center" 
-          alignItems="center" 
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           fontSize={[24, 36, 48]}
         >
           <Spinner/>

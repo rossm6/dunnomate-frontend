@@ -86,15 +86,15 @@ function Practice() {
   const [practiceErrors, setPracticeErrors] = useState(new Set());
   const messages = [
     "The game is dead easy.  Let's look at two examples together.",
-    `Below is a 3 x 3 grid.  Each square in the grid contains four things: background color, shape, shape color
-    and shape formation.
+    `Below is a 3 x 3 grid.  Each square in the grid contains four things: background color, shape, shape color and shape formation.
+
     Your job is to click the square which is the odd one out.`,
-    `
-    Nice one!
+    `Nice one!
+
     One last practice game to go.  This one is more difficult.
     `,
-    `
-    Great!
+    `Great!
+
     Time to play for real.
     `,
   ];
@@ -121,7 +121,7 @@ function Practice() {
   const grids = [
     <></>,
     !practiceErrors.has(1) ? (
-      <Box aspectRatio="1" height={"100%"}>
+      <Box height={"100%"}>
         <Box height="100%" bg="white" p={2} borderRadius={20}>
           <GameGrid
             squares={games?.[0]?.game?.squares || []}
@@ -149,7 +149,7 @@ function Practice() {
       />
     ),
     !practiceErrors.has(2) ? (
-      <Box aspectRatio="1" height={"100%"}>
+      <Box height={"100%"}>
         <Box height="100%" bg="white" p={2} borderRadius={20}>
           <GameGrid
             squares={games?.[1]?.game?.squares || []}
@@ -187,7 +187,7 @@ function Practice() {
         <Box as="h1" textAlign="center" fontSize={[18, 20]}>
           Practice Mode
         </Box>
-        <Box fontSize={14} mb={30} textAlign="center" whiteSpace="pre-line">
+        <Box fontSize={14} my={30} textAlign="center" whiteSpace="pre-line">
           {messages[index]}
         </Box>
         <Box mt={30}>

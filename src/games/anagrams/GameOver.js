@@ -22,7 +22,7 @@ export default function GameOver() {
         chartColor={theme.colors.yellow}
         chartData={state.result?.chart}
         url="https://www.dunnomate.com/games/anagrams"
-        shareMessage="Example keypad share message"
+        shareMessage={`Dunnomate, I only scored ${state.result?.you?.score}`}
       >
         {state.unsolvedAnagram && (
           <Box mt={6} mb={4}>

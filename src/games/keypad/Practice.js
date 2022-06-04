@@ -91,7 +91,7 @@ function Practice() {
                 Practice Mode
               </Box>
               <Box
-                fontSize={12}
+                fontSize={14}
                 maxHeight={200}
                 mb={30}
                 position="relative"

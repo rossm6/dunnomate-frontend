@@ -10,6 +10,7 @@ import BasePage from "../../components/Page";
 import isAnswerCorrect from "../../utilities/isAnswerCorrect";
 import { AppContext } from "../../components/AppProvider";
 import Spinner from "../../components/Spinner";
+import { GAME_TIME_LIMIT } from "./constants";
 
 export default function Game() {
   const { init } = useContext(AppContext);
@@ -26,7 +27,7 @@ export default function Game() {
    */
 
   const {  timeRemaining: countDown } = useTimer({ duration: 3 });
-  const { timeRemaining, start } = useTimer({ automatic: false, duration: 30 });
+  const { timeRemaining, start } = useTimer({ automatic: false, duration: GAME_TIME_LIMIT });
   const [score,, increaseScore] = useCounter(0);
   const [lives, decreaseLives] = useCounter(3);
   const [data] = useDataLoader(init.urls.get_odd_one_out_game);
@@ -42,7 +43,10 @@ export default function Game() {
   }, [countDown, game?.squares, start]);
 
   useEffect(() => {
-    if (lives === 0 || timeRemaining === 0 || gameIndex > games?.length) {
+
+    console.log(lives, timeRemaining, gameIndex, games);
+
+    if (lives === 0 || timeRemaining === 0 || gameIndex >= games?.length) {
       dispatch({
         type: "gameOver",
         payload: {
@@ -75,9 +79,9 @@ export default function Game() {
       <BasePage bg="green">
         <Box
           flex={1}
-          display="flex" 
-          justifyContent="center" 
-          alignItems="center" 
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           fontSize={[24, 36, 48]}
         >
           {countDown}
@@ -91,9 +95,9 @@ export default function Game() {
       <BasePage bg="green">
         <Box
           flex={1}
-          display="flex" 
-          justifyContent="center" 
-          alignItems="center" 
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
           fontSize={[24, 36, 48]}
         >
           <Spinner/>
@@ -156,13 +160,13 @@ export default function Game() {
           </Box>
         </Box>
       </Box>
-      <Box aspectRatio={"1"} height={"100%"}>
+      <Box height={"100%"}>
         <Box height="100%" bg="white" p={2} borderRadius={20}>
           <GameGrid
             squares={game?.squares || []}
             onClick={(index) => checkAnswer(index)}
           />
-        </Box> 
+        </Box>
       </Box>
     </Page>
   );

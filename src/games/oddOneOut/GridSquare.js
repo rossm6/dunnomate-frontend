@@ -16,7 +16,6 @@ function GridSquare({ background, shape, color, formation, onClick }) {
 
   return (
     <Box
-      aspectRatio="1"
       bg={background}
       display="grid"
       gridTemplateColumns="1fr 1fr 1fr"
@@ -31,10 +30,9 @@ function GridSquare({ background, shape, color, formation, onClick }) {
     >
       {formation.split("").map((el, index) =>
         el === "0" ? (
-          <Box aspectRatio="1" key={index}></Box>
+          <Box key={index}></Box>
         ) : (
           <Box
-            aspectRatio="1"
             display="flex"
             justifyContent="center"
             alignItems="center"

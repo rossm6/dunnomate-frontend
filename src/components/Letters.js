@@ -22,7 +22,6 @@ export function LetterTile({ bg, children, onClick }) {
         borderRadius={5}
         height={40}
         width={40}
-        aspectRatio={1}
         flexShrink={1}
       >
         {children}

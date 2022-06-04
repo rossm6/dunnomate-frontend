@@ -6,8 +6,8 @@ export default function Page({ children }) {
     <Base bg="yellow">
       <Box
         flex={1}
-        pt={[20, 30]}
-        pb={[40, 60]}
+        pt={[40, 50]}
+        pb={[50, 60]}
         mx={4}
         display="flex"
         justifyContent="center"

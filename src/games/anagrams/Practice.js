@@ -91,10 +91,11 @@ export default function Practice() {
         <Box as="h1" textAlign="center" fontSize={[18, 20]}>
           Practice Mode
         </Box>
-        <Box fontSize={14} my={30} textAlign="center" whiteSpace="pre-line">
-          You've got thirty seconds to solve the anagram. Click the letters
-          below to spell your solution. If you want to remove a letter from your
-          attempt, click it again.
+        <Box fontSize={14} my={30} textAlign="left" whiteSpace="pre-line">
+          {`You've got sixty seconds to solve the anagram.
+
+          Click the letters below to spell your solution. If you want to remove a letter from your attempt, click it again.`
+          }
         </Box>
       </Box>
       <Anagram

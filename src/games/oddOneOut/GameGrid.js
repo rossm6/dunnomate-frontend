@@ -37,7 +37,6 @@ export default function GameGrid({ squares, onClick }) {
     <GameDimensions>
       <Box
         className="grid"
-        height={1}
         display="grid"
         gridGap={2}
         gridTemplateColumns={"1fr 1fr 1fr"}
