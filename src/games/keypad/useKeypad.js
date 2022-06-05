@@ -20,7 +20,8 @@ export function replaceNumberNine(numbers, map, exclude_indexes = []) {
     const availableIndexes = Array.from(Array(9).keys()).filter(i => i !== map[8]).filter(
       (i) => !exclude_indexes.includes(i)
     );
-    let newIndex = Math.round(Math.random() * availableIndexes.length);
+    let randomIndex = Math.floor(Math.random() * availableIndexes.length);
+    let newIndex = availableIndexes[randomIndex];
     numbers[i] = numbers[newIndex];
     numbers[newIndex] = 9;
   }
