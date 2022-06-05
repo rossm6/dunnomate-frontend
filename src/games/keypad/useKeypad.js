@@ -17,7 +17,7 @@ export const keyboardDefaultMap = {
 export function replaceNumberNine(numbers, map, exclude_indexes = []) {
   let i = numbers.indexOf(9);
   if (i === map[8]) {
-    const availableIndexes = Array.from(Array(9).keys()).filter(
+    const availableIndexes = Array.from(Array(9).keys()).filter(i => i !== map[8]).filter(
       (i) => !exclude_indexes.includes(i)
     );
     let newIndex = Math.round(Math.random() * availableIndexes.length);
